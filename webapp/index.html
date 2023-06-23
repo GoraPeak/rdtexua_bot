@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="MobileOptimized" content="176"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    <title>Замовлення I2 ліцензій</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <style>
+        body {
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+        }
+
+        button {
+            color: var(--tg--theme-button-color);
+            background: var(--tg-theme-button-text-color);
+        }
+
+        button:hover {
+            background: var(--tg-theme-secondary-bg-color);
+        }
+        .green{
+            color: green;
+        }
+        .red{
+        color: red;
+        }
+  
+    </style>
+</head>
+<body onload="doconload()">
+
+
+ <form class="col-12 was-validated" id="lic-i2" novalidate>
+    <div class="container" h-100>
+        <div class="pt-5 pb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h5 id="cardlicensetitle">Замовлення ліцензій</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col" id="tablethead1">Обрати</th>
+                            <th scope="col" id="tablethead2">Назва продукту</th>
+                            <th scope="col" id="tablethead3">Випробування</th>
+                            <th scope="col" id="tablethead4">Кількість</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <input class="form-check-input" type="checkbox" value="" id="selected1" name="i2Notebook_sel">
+                            </th>
+                            <td><label for="selected1">i2 Analyst’s Notebook</label></td>
+                            <td>
+                               <input  class="form-check-input" type="checkbox" value="" id="trials1" name="i2Notebook_trials">
+                            </td>
+                            <td>
+                                <input id="quantity1" min="0" max="9999" value="0" type="number" class="pull-right" name="i2Notebook_count">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <input class="form-check-input" type="checkbox" value="" id="selected2" name="i2Studio_sel">
+                            </th>
+                            <td><label for="selected2">Analysis Studio</label></td>
+                            <td>
+                                <input  class="form-check-input" type="checkbox" value="" id="trials2" name="i2Studio_trials">
+                            </td>
+                            <td>
+                                <input id="quantity2" min="0" max="9999"  value="0" type="number" class="pull-right" name="i2Studio_count">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                    <input class="form-check-input" type="checkbox" value="" id="selected3" name="i2Hub_sel">
+                            </th>
+                            <td><label for="selected3">Analysis Hub</label></td>
+                            <td>
+                                <input  class="form-check-input" type="checkbox" value="" id="trials3" name="i2Hub_trials">
+                            </td>
+                            <td>
+                                <input id="quantity3" min="0" max="9999"  value="0" type="number" class="pull-right" name="i2Hub_count">
+                            </td>
+                        </tr>  
+                        <tr>
+                            <th scope="row">
+                                <input class="form-check-input" type="checkbox" value="" id="selected4" name="I2UASearch_sel">
+                            </th>
+                            <td><label for="selected4">i2 OpenUA Search*</label></td>
+                            <td>
+                               <input  class="form-check-input" type="checkbox" value="" id="trials4" name="I2UASearch_trials">
+                            </td>
+                            <td>
+                               <input id="quantity4" min="0" max="9999"  value="0" type="number" class="pull-right" name="I2UASearch_count">
+                            </td>
+                        </tr>                                     
+                        </tbody>
+                    </table>
+                    <div class="p" id="licremark1">(*)Обираючи випробування i2 OpenUA Search, також оберіть i2 Analyst's Notebook, якщо не маєте або версія нижче 9.</div>                
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 id="cardcompanytitle">Інформація про підприємство/організацію</h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="card-text">
+    
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="company-name" name="company-name" pattern=".{10,100}" required>
+                            <label for="company-name" id="labelcompanyname">Назва</label>
+                            <div class="invalid-feedback" id="invalidcompanyname">
+                                Заповніть поле, від 10 символів.
+                            </div>
+                        </div>
+
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="company-address" name="company-address" pattern=".{20,100}" required>
+                            <label for="company-address" id="labelcompanyaddress">Адреса</label>
+                            <div class="invalid-feedback" id="invalidcompanyaddress">
+                                Заповніть поле, від 20 символів.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="url" class="form-control" id="company-url" name="company-url" pattern="^https*:\/\/[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$">
+                            <label for="company-url" id="labelcompanyurl">Веб-сторінка</label>
+                            <div class="invalid-feedback" id="invalidcompanyurl">
+                                Зразок адреси http://example.com
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 id="cardpersontitle">Контактна особа</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+            
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="person-name" name="person-name" pattern="^[a-zA-Zа-яА-ЯІіЄєЇї\s]{5,50}$" required>
+                            <label for="person-name" id="labelpersonname">П.І.Б.</label>
+                            <div class="invalid-feedback" id="invalidpersonname">
+                                Заповніть поле.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="person-email" name="person-email" pattern="^.+@.+\.[a-zA-Z]{2,3}$" required>
+                            <label for="person-email" id="labelpersonemail">Адреса електронної пошти*</label>
+                            <div class="invalid-feedback" id="invalidpersonemail">
+                                Заповніть поле за зразком name@hostname.com
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="person-phone" name="person-phone" pattern="(\+*\d{10,14}[\s*,]*)+" required>
+                            <label for="person-phone" id="labelpersonphone">Телефон</label>
+                            <div class="invalid-feedback" id="invalidpersonphone">
+                                Заповніть поле, наприклад +380671234567 або 0671234567. Якщо телефонів декілька розділіть їх пробілом або комою.
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-check mb-3">
+                            <label class="form-check-label" for="iagree" id="labeliamagree">Даю згоду на обробку персональних даних</label>
+                            <input class="form-check-input required" type="checkbox" name="iamagree" value="" id="iagree" required>
+                            <div class="invalid-feedback" id="invalidiamagree">
+                                Необхідно відмітити, перед відправкою даних
+                            </div>
+                        </div>
+
+                        <div class="p" id="remarkcontactperson">
+                            (*) в разі позитивного рішення про надання ліцензій для випробування обов'язково потрібна корпоративна електронна пошта. Замовникам з електронною поштою @gmail, @yahoo, @aol, @ukr.net та інш. ліцензії для випробування не надсилаються.
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+ 
+            <div class="p-3"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 id="cardinfotitle">Додаткова Інформація</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+            
+                        <div class="mb-3">
+                            <label for="info" id="labeltextmessage">Текстове повідомлення</label>
+                            <textarea class="form-control textarea" id="info" name="info" rows="5"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 row">
+                
+                <button class="btn btn-primary btn-lg btn-block" type="submit" id="sendButton">Відправити</button>
+                <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="ValidationALert">
+                    <strong>Виправіть дані в полях!</strong> Деякі поля містять некоректні дані.
+                </div>
+                <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="LicenseALertChecked">
+                    Оберіть хоча б один продукт ліцензування!
+                </div>
+                <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="LicenseALertCount">
+                    Для обраної ліцензії не вказана кількість!
+                </div>  
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function validation(forms,event) {
+        
+        let result = true;
+
+        let count_license = 0
+        let checked_license = 0
+
+        let lic_el = '{ "lic_el" : [' +
+                    '{ "lic_checked":"selected1" , "lic_count":"quantity1" },' +
+                    '{ "lic_checked":"selected2" , "lic_count":"quantity2" },' +
+                    '{ "lic_checked":"selected3" , "lic_count":"quantity3" },' +
+                    '{ "lic_checked":"selected4" , "lic_count":"quantity4" } ]}';
+        const lic_el_obj = JSON.parse(lic_el);
+
+        for (let i = 0; i <4; i++) {    
+            if (document.getElementById(lic_el_obj.lic_el[i].lic_checked).checked && document.getElementById(lic_el_obj.lic_el[i].lic_count).value==0) {
+                count_license += 1
+            }
+            if (document.getElementById(lic_el_obj.lic_el[i].lic_checked).checked ) {
+                checked_license += 1
+            }
+        }
+
+        if (checked_license==0) {
+            result =false;
+            LicenseALertChecked=document.querySelector("#LicenseALertChecked")
+            LicenseALertChecked.classList.remove("d-none");
+            setTimeout(function(){LicenseALertChecked.classList.add("d-none");}, 5000);
+        }
+
+        if (count_license>0) {
+            result =false;
+            LicenseALertCount=document.querySelector("#LicenseALertCount")
+            LicenseALertCount.classList.remove("d-none");
+            setTimeout(function(){LicenseALertCount.classList.add("d-none");}, 5000);
+        }
+        var elementvalidation = Array.prototype.filter.call(forms, function(form) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+              result = false;
+            }
+            form.classList.add('was-validated');
+        })
+
+        
+        if (!result) {
+            ValidationALert=document.querySelector("#ValidationALert")
+            ValidationALert.classList.remove("d-none");
+            setTimeout(function(){ValidationALert.classList.add("d-none");}, 5000);
+        }
+
+        return result
+    }
+
+ 
+    function doconload(){ 
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let lang = urlParams.get('lang')
+        if (lang === null)
+        {
+            lang = "uk";
+        }
+
+        if (lang == 'en')
+        {
+            var i18n = {
+                sendButton: "Send",
+                LicenseALertCount:"The selected license does not have the specified quantity",
+                doctitle:"Ordering I2 licenses",
+                cardlicensetitle:"Ordering licenses",
+                tablethead1:"Choose",
+                tablethead2:"Product name",
+                tablethead3:"Trials ",
+                tablethead4:"Quantity",
+                licremark1:"(*) When choosing the i2 OpenUA Search trial, also choose i2 Analyst's Notebook if you do not have it or the version is lower than 9.",
+                cardcompanytitle:"Information about the company/organization",
+                labelcompanyname:"Name",
+                invalidcompanyname:"Fill in the field with 10 characters or more.",
+                labelcompanyaddress:"Address",
+                invalidcompanyaddress:"Fill in the field with 20 characters or more.",
+                labelcompanyurl:"Web page",
+                invalidcompanyurl:"Sample address http://example.com",
+                cardpersontitle:"Contact person",
+                labelpersonname:"Full name",
+                invalidpersonname:"Fill in the field.",
+                labelpersonemail:"Email address",
+                invalidpersonemail:"Fill in the field like this name@hostname.com",
+                labelpersonphone:"Phone number",
+                invalidpersonphone:"Fill in the field, for example +380671234567 or 0671234567. If there are several phone numbers, separate them with a space or comma.",
+                labeliamagree:"I agree to the processing of personal data",
+                invalidiamagree:"It should be noted that before sending data",
+                remarkcontactperson:"(*) in case of a positive decision to grant trial licenses, a corporate e-mail is required. No trial licenses will be sent to customers with @gmail, @yahoo, @aol, @ukr.net, etc. email addresses.",
+                cardinfotitle:"Additional Information",
+                labeltextmessage:"Text message"
+            }  
+        }
+        
+        if (lang == 'en')
+        {
+            for (let [key, value] of Object.entries(i18n)) {
+                let doc_el=document.getElementById(key);
+                if (key=='doctitle') {
+                    document.title=value
+                }
+                else
+                {
+                    doc_el.innerHTML=value;
+                }
+            }
+        }
+
+    }
+
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+
+    document.getElementById("lic-i2").addEventListener("submit", function (event){
+        event.preventDefault();
+        
+        let data = new FormData(this);
+        let form_checkbox = this.querySelectorAll("input[type=checkbox]");
+
+        form_checkbox.forEach(function (currentValue, currentIndex, listObj) {
+            form_checkbox_i=form_checkbox.item(`${currentIndex}`);
+            //console.log(form_checkbox_i.name,form_checkbox_i.checked.toString());
+            data.append(form_checkbox_i.name, form_checkbox_i.checked.toString());
+        }, "myThisArg");
+
+        const json = Object.fromEntries(data.entries());
+   
+        if (validation(this,event)==true){
+            tg.sendData(JSON.stringify(json));
+            tg.close();
+        }
+    })
+</script> 
+
+
+
+</body>
+</html>
