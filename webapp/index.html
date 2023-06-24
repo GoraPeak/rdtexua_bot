@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="MobileOptimized" content="176"/>
     <meta name="robots" content="noindex,nofollow"/>
+    <meta name="author" content="Petro Kovalchuk">
+    <meta name="description" content="Form ordering i2group products license. RDTEX LLC. http://rdtex.ua">
     <title>Замовлення I2 ліцензій</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,11 +28,20 @@
         button:hover {
             background: var(--tg-theme-secondary-bg-color);
         }
-        .green{
-            color: green;
+        
+
+        .card-header {
+            color: var(--tg-theme-text-color);
+            background-color: var(--tg-theme-secondary-bg-color);
         }
-        .red{
-        color: red;
+
+        .card, .form-control, .table  {
+            color: var(--tg-theme-text-color);
+            background-color: var(--tg-theme-bg-color);
+        }
+
+        .label, label {
+            color:var(--tg-theme-text-color);
         }
   
     </style>
@@ -38,72 +49,67 @@
 <body onload="doconload()">
 
 
- <form class="col-12 was-validated" id="lic-i2" novalidate>
+ <form class="col-12 col-md-8 col-sm-6 was-validated" id="lic-i2" novalidate>
     <div class="container" h-100>
         <div class="pt-5 pb-5">
             <div class="card">
                 <div class="card-header">
                     <h5 id="cardlicensetitle">Замовлення ліцензій</h5>
                 </div>
+
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col" id="tablethead1">Обрати</th>
-                            <th scope="col" id="tablethead2">Назва продукту</th>
-                            <th scope="col" id="tablethead3">Випро-
-                                бування</th>
-                            <th scope="col" id="tablethead4">Кіль-
-                                кість</th>
+                            <th scope="col" id="tablethead2" style="width: 80%; word-wrap: break-word;">Назва продукту</th>
+                            <th scope="col" id="tablethead3" style="width: 10%; word-wrap: break-word;">Випро- бування</th>
+                            <th scope="col" id="tablethead4" style="width: 10%; word-wrap: break-word;">Кіль- кість</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">
+                            <td>
                                 <input class="form-check-input" type="checkbox" value="" id="selected1" name="i2Notebook_sel">
-                            </th>
-                            <td><label for="selected1">i2 Analyst’s Notebook</label></td>
+                                <label for="selected1">i2 Analyst’s Notebook</label></td>
                             <td>
                                <input  class="form-check-input" type="checkbox" value="" id="trials1" name="i2Notebook_trials">
                             </td>
                             <td>
-                                <input id="quantity1" min="0" max="9999" value="0" type="number" class="pull-right" name="i2Notebook_count">
+                                <input id="quantity1" min="0" max="999" value="0" type="number" class="pull-right" name="i2Notebook_count">
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">
+                            <td>
                                 <input class="form-check-input" type="checkbox" value="" id="selected2" name="i2Studio_sel">
-                            </th>
-                            <td><label for="selected2">Analysis Studio</label></td>
+                                <label for="selected2">Analysis Studio</label></td>
                             <td>
                                 <input  class="form-check-input" type="checkbox" value="" id="trials2" name="i2Studio_trials">
                             </td>
                             <td>
-                                <input id="quantity2" min="0" max="9999"  value="0" type="number" class="pull-right" name="i2Studio_count">
+                                <input id="quantity2" min="0" max="999"  value="0" type="number" class="pull-right" name="i2Studio_count">
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">
-                                    <input class="form-check-input" type="checkbox" value="" id="selected3" name="i2Hub_sel">
-                            </th>
-                            <td><label for="selected3">Analysis Hub</label></td>
+                            <td>
+                                <input class="form-check-input" type="checkbox" value="" id="selected3" name="i2Hub_sel">
+                                <label for="selected3">Analysis Hub</label></td>
                             <td>
                                 <input  class="form-check-input" type="checkbox" value="" id="trials3" name="i2Hub_trials">
                             </td>
                             <td>
-                                <input id="quantity3" min="0" max="9999"  value="0" type="number" class="pull-right" name="i2Hub_count">
+                                <input id="quantity3" min="0" max="999"  value="0" type="number" class="pull-right" name="i2Hub_count">
                             </td>
                         </tr>  
                         <tr>
-                            <th scope="row">
+                            <td>
                                 <input class="form-check-input" type="checkbox" value="" id="selected4" name="I2UASearch_sel">
-                            </th>
-                            <td><label for="selected4">i2 OpenUA Search*</label></td>
+                                <label for="selected4">i2 OpenUA Search*</label>
+                            </td>
                             <td>
                                <input  class="form-check-input" type="checkbox" value="" id="trials4" name="I2UASearch_trials">
                             </td>
                             <td>
-                               <input id="quantity4" min="0" max="9999"  value="0" type="number" class="pull-right" name="I2UASearch_count">
+                               <input id="quantity4" min="0" max="999"  value="0" type="number" class="pull-right" name="I2UASearch_count">
                             </td>
                         </tr>                                     
                         </tbody>
@@ -120,7 +126,7 @@
 
                     <div class="card-text">
     
-                        <div class="form-floating mb-3">
+                        <div class="mb-3">
                             <input type="text" class="form-control" id="company-name" name="company-name" pattern=".{10,100}" required>
                             <label for="company-name" id="labelcompanyname">Назва</label>
                             <div class="invalid-feedback" id="invalidcompanyname">
@@ -129,7 +135,7 @@
                         </div>
 
 
-                        <div class="form-floating mb-3">
+                        <div class="mb-3">
                             <input type="text" class="form-control" id="company-address" name="company-address" pattern=".{20,100}" required>
                             <label for="company-address" id="labelcompanyaddress">Адреса</label>
                             <div class="invalid-feedback" id="invalidcompanyaddress">
@@ -137,8 +143,8 @@
                             </div>
                         </div>
 
-                        <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-url" name="company-url" pattern="^https*:\/\/[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$">
+                        <div class="mb-3">
+                            <input type="url" class="form-control" id="company-url" name="company-url" pattern="https?://.*">
                             <label for="company-url" id="labelcompanyurl">Веб-сторінка</label>
                             <div class="invalid-feedback" id="invalidcompanyurl">
                                 Зразок адреси http://example.com
@@ -156,7 +162,7 @@
                 <div class="card-body">
                     <div class="card-text">
             
-                        <div class="form-floating mb-3">
+                        <div class="mb-3">
                             <input type="text" class="form-control" id="person-name" name="person-name" pattern="^[a-zA-Zа-яА-ЯІіЄєЇї\s]{5,50}$" required>
                             <label for="person-name" id="labelpersonname">П.І.Б.</label>
                             <div class="invalid-feedback" id="invalidpersonname">
@@ -164,7 +170,7 @@
                             </div>
                         </div>
 
-                        <div class="form-floating mb-3">
+                        <div class="mb-3">
                             <input type="email" class="form-control" id="person-email" name="person-email" pattern="^.+@.+\.[a-zA-Z]{2,3}$" required>
                             <label for="person-email" id="labelpersonemail">Адреса електронної пошти*</label>
                             <div class="invalid-feedback" id="invalidpersonemail">
@@ -172,7 +178,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-floating mb-3">
+                        <div class="mb-3">
                             <input type="tel" class="form-control" id="person-phone" name="person-phone" pattern="(\+*\d{10,14}[\s*,]*)+" required>
                             <label for="person-phone" id="labelpersonphone">Телефон</label>
                             <div class="invalid-feedback" id="invalidpersonphone">
@@ -305,7 +311,6 @@
                 LicenseALertCount:"The selected license does not have the specified quantity",
                 doctitle:"Ordering I2 licenses",
                 cardlicensetitle:"Ordering licenses",
-                tablethead1:"Choose",
                 tablethead2:"Product name",
                 tablethead3:"Trials ",
                 tablethead4:"Quantity",
@@ -343,14 +348,16 @@
                 {
                     doc_el.innerHTML=value;
                 }
-            }
+                }
         }
 
     }
 
+
     let tg = window.Telegram.WebApp;
     tg.expand();
-
+    tg.MainButton.hide();
+    document.documentElement.className = Telegram.WebApp.colorScheme;
 
     document.getElementById("lic-i2").addEventListener("submit", function (event){
         event.preventDefault();
@@ -365,8 +372,10 @@
         }, "myThisArg");
 
         const json = Object.fromEntries(data.entries());
+        //console.log(json);
    
         if (validation(this,event)==true){
+
             tg.sendData(JSON.stringify(json));
             tg.close();
         }
